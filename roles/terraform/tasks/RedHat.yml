@@ -1,12 +1,9 @@
 ---
 - name: Add the HashiCorp Linux Repository
-  shell: >
-    sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-
-- name: Update package lists
-  yum:
-    update_cache: yes
-  when: ansible_distribution_major_version == "7"
+  ansible.builtin.yum_repository:
+    name: hashicorp
+    baseurl: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    state: present
 
 - name: Install Terraform
   package:

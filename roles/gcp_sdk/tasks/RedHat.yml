@@ -9,6 +9,7 @@
     gpgkey:
       - https://packages.cloud.google.com/yum/doc/yum-key.gpg
       - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    state: present
 
 - name: Install Google Cloud SDK
   package:
