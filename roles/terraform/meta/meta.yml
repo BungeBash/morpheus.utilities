@@ -1,0 +1,33 @@
+galaxy_info:
+  role_name: terraform
+  author: Chris Bunge
+  description: Installs Terraform on EL or Ubuntu Hosts
+  company: Code the Things
+
+  # Some suggested licenses:
+  # - BSD (default)
+  # - MIT
+  # - GPLv2
+  # - GPLv3
+  # - Apache
+  # - CC-BY
+  license: license (GPLv2, CC-BY, etc)
+
+  min_ansible_version: 1.2
+
+  github_branch: master
+
+  platforms:
+    - name: EL
+      versions:
+      - 7
+      - 8
+    - name: Ubuntu
+      versions:
+      - focal
+      - bionic
+
+  galaxy_tags:
+    - terraform
+
+dependencies: []
