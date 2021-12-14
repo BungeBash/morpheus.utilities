@@ -1,13 +1,14 @@
 ---
-- name: Download Cloud SDK Distro
-  shell: >
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | 
-      sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-
 - name: Import Google Cloud Key
-  shell: >
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | 
-      sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    keyring: /usr/share/keyrings/cloud.google.gpg
+    state: present
+
+- name: Download Cloud SDK Distro
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main"
+    state: present
 
 - name: Update package lists
   apt:

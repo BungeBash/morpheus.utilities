@@ -1,6 +1,30 @@
 ---
+- name: Install AzureCLI Required Packages
+  package:
+    name:
+      - ca-certificates
+      - curl
+      - apt-transport-https
+      - lsb-release
+      - gnupg
+    state: present
+
+- name: Install Azure CLI GPG Key
+  ansible.builtin.apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
+    state: present
+
+- name: Add Azure CLI Repo
+  ansible.builtin.apt_repository:
+    repo: "deb https://packages.microsoft.com/repos/azure-cli/ {{ ansible_lsb['codename'] }} main"
+    state: present  
+
 - name: Install Azure CLI
-  shell: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+  package:
+    name:
+      - azure-cli
+    state: present
 
 - name: Install PowerShellGet
   shell:

@@ -1,9 +1,11 @@
+- name: Add Ansible Repo
+  ansible.builtin.apt_repository:
+    repo: 'ppa:ansible/ansible'
+    state: present
+
 - name: Update package lists
   apt:
     update_cache: yes
-
-- name: Add Ansible Repo
-  shell: add-apt-repository --yes --update ppa:ansible/ansible
 
 - name: Install Ansible
   package:

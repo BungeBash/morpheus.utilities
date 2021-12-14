@@ -1,22 +1,14 @@
 ---
 - name: Download Cloud SDK Distro
-  shell:
-    cmd: |
-      sudo tee -a /etc/yum.repos.d/google-cloud-sdk.repo << EOM
-      [google-cloud-sdk]
-      name=Google Cloud SDK
-      baseurl=https://packages.cloud.google.com/yum/repos/cloud-sdk-el8-x86_64
-      enabled=1
-      gpgcheck=1
-      repo_gpgcheck=0
-      gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
-             https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-      EOM
-
-- name: Update package lists
-  yum:
-    update_cache: yes
-  when: ansible_distribution_major_version == "7"
+  ansible.builtin.yum_repository:
+    name: Google Cloud SDK
+    baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el8-x86_64
+    enabled: yes
+    gpgcheck: yes
+    repo_gpgcheck: no
+    gpgkey:
+      - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
 - name: Install Google Cloud SDK
   package:
