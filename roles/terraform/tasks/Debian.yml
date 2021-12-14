@@ -1,0 +1,19 @@
+---
+- name: Import HashiCorp GPG Key
+  shell: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+- name: Add the HashiCorp Linux Repository
+  shell: >
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+- name: Update package lists
+  apt:
+    update_cache: yes
+
+- name: Install Terraform
+  package:
+    name:
+      - software-properties-common
+      - gnupg
+      - terraform
+    state: present

@@ -1,0 +1,45 @@
+---
+- name: Import the Microsoft repository key
+  shell: rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+- name: Create Local Azure CLI Repository
+  shell:
+    cmd: |
+      echo -e "[azure-cli]
+      name=Azure CLI
+      baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/azure-cli.repo
+
+- name: Update package lists
+  yum:
+    update_cache: yes
+  when: ansible_distribution_major_version == "7"
+
+- name: Install Azure CLI
+  package:
+    name:
+      - azure-cli
+    state: present
+
+- name: Install PowerShellGet
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Install-Module -Name PowerShellGet -Force -Scope AllUsers
+      EOF
+
+- name: Install Az.Subscription
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Install-Module -Name az.subscription -allowprerelease -Force -Scope AllUsers
+      EOF
+
+- name: Install Partner Center CLI
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Install-Module -Name partnercenter -allowclobber -Force -Scope AllUsers
+      EOF

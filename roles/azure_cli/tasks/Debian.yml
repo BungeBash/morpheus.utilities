@@ -1,0 +1,24 @@
+---
+- name: Install Azure CLI
+  shell: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+- name: Install PowerShellGet
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Install-Module -Name PowerShellGet -Force -Scope AllUsers
+      EOF
+
+- name: Install Az.Subscription
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Install-Module -Name az.subscription -allowprerelease -Force -Scope AllUsers
+      EOF
+
+- name: Install Partner Center CLI
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Install-Module -Name partnercenter -allowclobber -Force -Scope AllUsers
+      EOF

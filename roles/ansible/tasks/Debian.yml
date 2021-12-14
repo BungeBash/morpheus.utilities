@@ -1,0 +1,13 @@
+- name: Update package lists
+  apt:
+    update_cache: yes
+
+- name: Add Ansible Repo
+  shell: add-apt-repository --yes --update ppa:ansible/ansible
+
+- name: Install Ansible
+  package:
+    name:
+      - software-properties-common
+      - ansible
+    state: present

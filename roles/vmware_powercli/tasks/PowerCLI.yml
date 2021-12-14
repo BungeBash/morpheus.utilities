@@ -1,0 +1,20 @@
+---
+- name: Install PowerCLI
+  become: yes
+  become_method: sudo
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Install-Module -Name VMware.PowerCLI -Scope AllUsers -confirm:$false -force
+      EOF
+
+- name: Set PowerCLI Settings
+  become: yes
+  become_method: sudo
+  shell:
+    cmd: |
+      pwsh -c - << 'EOF'
+      Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCeip $false -confirm:$false
+      Set-PowerCLIConfiguration -Scope AllUsers -InvalidCertificateAction Ignore -confirm:$false
+      Set-PowerCLIConfiguration -Scope AllUsers -DefaultVIServerMode Multiple -confirm:$false
+      EOF
