@@ -3,8 +3,30 @@
   hosts: all
   gather_facts: true
   become: true
-  roles:
-    - azure_cli
-    - gcp_sdk
-    - powershell
-    - vmware_powercli
+  vars:
+    powershell: false
+    azure_cli: false
+    vmware_powercli: false
+    gcp_sdk: false
+    terraform: false
+    ansible: false
+
+  tasks:
+    - include_role:
+        name: powershell
+      when: powershell or azure_cli or vmware_powercli
+    - include_role:
+        name: azure_cli
+      when: azure_cli
+    - include_role:
+        name: vmware_powercli
+      when: vmware_powercli
+    - include_role:
+        name: gcp_sdk
+      when: gcp_sdk
+    - include_role:
+        name: terraform
+      when: terraform
+    - include_role:
+        name: ansible
+      when: ansible
