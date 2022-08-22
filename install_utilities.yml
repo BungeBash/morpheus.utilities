@@ -5,3 +5,8 @@
   become: true
   roles:
     - Terraform
+    - azure_cli
+    - gcp_sdk
+    - powershell
+    - terraform
+    - vmware_powercli
