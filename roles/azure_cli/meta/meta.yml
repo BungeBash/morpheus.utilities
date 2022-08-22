@@ -34,4 +34,5 @@ galaxy_info:
     - cloud
     - csp
 
-dependencies: []
+dependencies:
+  - powershell
