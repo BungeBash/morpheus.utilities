@@ -4,7 +4,7 @@
   gather_facts: true
   become: true
   roles:
-    - Terraform
+    - terraform
     - azure_cli
     - gcp_sdk
     - powershell
