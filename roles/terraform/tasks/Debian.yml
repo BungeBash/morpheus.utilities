@@ -1,8 +1,8 @@
 ---
 - name: Import HashiCorp GPG Key
-  ansible.builtin.apt_key:
+  ansible.builtin.get_url:
     url: https://apt.releases.hashicorp.com/gpg
-    state: present
+    destination: /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 - name: Add the HashiCorp Linux Repository
   ansible.builtin.apt_repository:
