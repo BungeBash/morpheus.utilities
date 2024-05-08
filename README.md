@@ -28,8 +28,7 @@ This Ansible code is intended to help install a few  in initial utilies that Mor
     - **ANSIBLE REPO:** `Morpheus Utilties`  
     - **GIT REF:** `main`  
     - **PLAYBOOK:** `install_utilities.yml`  
-    - **COMMAND OPTIONS:** (Define these to which installers are desired)  
-    - `--extra-vars '{"powershell":true,"azure_cli":true,"vmware_powercli":true,"gcp_sdk":true,"terraform":true,"ansible":true}'`  
+    - **COMMAND OPTIONS:** (Define these to which installers are desired) `--extra-vars '{"powershell":true,"azure_cli":true,"vmware_powercli":true,"gcp_sdk":true,"terraform":true,"ansible":true}'`  
     - **EXECUTE TARGET:** `Resource`  
 
 3. Run `Task`  
