@@ -14,22 +14,22 @@ This Ansible code is intended to help install a few  in initial utilies that Mor
 * VMware PowerCLI (PowerShell)
 
 ## How to Use
-1. Add `Ansible` integration in Morpheus to this GitRepo:
-    **NAME:** Morpheus Utilities
-    **Ansible GIT URL:** https://github.com/BungeBash/morpheus.utilities.git
-    **DEFAULT BRANCH:** main
-    **PLAYBOOKS PATH:** /
-    **ROLES PATH:** /roles
-    **GROUP VARIABLES PATH:** /
-    **HOST VARIABLES PATH:** /
-    **USE MORPHEUS AGENT COMMAND BUS:** TRUE
+1. Add `Ansible` integration in Morpheus to this GitRepo:  
+    **NAME:** Morpheus Utilities  
+    **Ansible GIT URL:** https://github.com/BungeBash/morpheus.utilities.git  
+    **DEFAULT BRANCH:** main  
+    **PLAYBOOKS PATH:** /  
+    **ROLES PATH:** /roles  
+    **GROUP VARIABLES PATH:** /  
+    **HOST VARIABLES PATH:** /  
+    **USE MORPHEUS AGENT COMMAND BUS:** TRUE  
 
-2. Add `Task` type `Ansible`:
-    **ANSIBLE REPO:** Morpheus Utilties
-    **GIT REF:** main
-    **PLAYBOOK:** install_utilities.yml
-    **COMMAND OPTIONS:** (Define these to which installers are desired)
-    `--extra-vars '{"powershell":true,"azure_cli":true,"vmware_powercli":true,"gcp_sdk":true,"terraform":true,"ansible":true}'`
-    **EXECUTE TARGET:** Resource
+2. Add `Task` type `Ansible`:  
+    **ANSIBLE REPO:** Morpheus Utilties  
+    **GIT REF:** main  
+    **PLAYBOOK:** install_utilities.yml  
+    **COMMAND OPTIONS:** (Define these to which installers are desired)  
+    `--extra-vars '{"powershell":true,"azure_cli":true,"vmware_powercli":true,"gcp_sdk":true,"terraform":true,"ansible":true}'`  
+    **EXECUTE TARGET:** Resource  
 
-3. Run `Task`
+3. Run `Task`  
