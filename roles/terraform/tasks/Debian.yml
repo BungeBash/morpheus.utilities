@@ -1,8 +1,10 @@
 ---
-- name: Download HashiCorp GPG key and store it in keyring
-  command:
-    cmd: "curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor > /usr/share/keyrings/hashicorp-archive-keyring.gpg"
-  become: yes
+- name: Import HashiCorp GPG Key
+  ansible.builtin.get_url:
+    url: "https://apt.releases.hashicorp.com/gpg"
+    dest: "/usr/share/keyrings/hashicorp-archive-keyring.gpg"
+    mode: "0644"
+    become: yes
 
 - name: Add the HashiCorp Linux Repository
   ansible.builtin.apt_repository:
