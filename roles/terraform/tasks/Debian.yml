@@ -6,6 +6,12 @@
     mode: "0644"
   become: yes
 
+- name: Import HashiCorp GPG key
+  ansible.builtin.apt_key:
+    keyring: "/usr/share/keyrings/hashicorp-archive-keyring.gpg"
+    state: present
+  become: yes
+
 - name: Add the HashiCorp Linux Repository
   ansible.builtin.apt_repository:
     repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
