@@ -1,6 +1,6 @@
 ---
 - name: Download HashiCorp GPG key and store it in keyring
-  ansible.builtin.shell:
+  command:
     cmd: "curl https://apt.releases.hashicorp.com/gpg | gpg --dearmor > /usr/share/keyrings/hashicorp-archive-keyring.gpg"
     become: yes
 
