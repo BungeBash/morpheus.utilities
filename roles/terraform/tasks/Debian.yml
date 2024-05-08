@@ -20,3 +20,4 @@
       - gnupg
       - terraform
     state: present
+    allow_unauthenticated: true
